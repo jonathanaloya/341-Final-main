@@ -1,0 +1,210 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "CSE 341 Final Project - API",
+    "description": "CSE 341 Final Project for Tiffany Voorhees and Luke Briggs",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3001",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/cars/": {
+      "get": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Create a new Car",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "brandName": {
+                  "type": "string",
+                  "example": "Ferrari"
+                },
+                "model": {
+                  "type": "string",
+                  "example": "Ferrari Test"
+                },
+                "year": {
+                  "type": "number",
+                  "example": 2024
+                },
+                "engine": {
+                  "type": "string",
+                  "example": "3.9L V8"
+                },
+                "horsepower": {
+                  "type": "number",
+                  "example": 661
+                },
+                "top_speed": {
+                  "type": "string",
+                  "example": "205 mph"
+                }
+              }
+            }
+          },
+          {
+            "name": "carImageFile",
+            "in": "formData",
+            "description": "Car Image file to upload",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/cars/{carId}": {
+      "get": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "carId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "Change model to Ferrari Testing instead of Ferrari Test and top_speed to 300 mph instead of 205 mph",
+        "parameters": [
+          {
+            "name": "carId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Create a new Car",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "brandName": {
+                  "type": "string",
+                  "example": "Ferrari"
+                },
+                "model": {
+                  "type": "string",
+                  "example": "Ferrari Testing"
+                },
+                "year": {
+                  "type": "number",
+                  "example": 2024
+                },
+                "engine": {
+                  "type": "string",
+                  "example": "3.9L V8"
+                },
+                "horsepower": {
+                  "type": "number",
+                  "example": 661
+                },
+                "top_speed": {
+                  "type": "string",
+                  "example": "300 mph"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "carId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  }
+}
